@@ -14,11 +14,17 @@ In this repo, I created a script that loops through various sheets and reads all
     End Sub
 
 #### Sub Tcker_Analysis()
+    Sub Tickr_Analysis()
     ' https://www.youtube.com/watch?v=nV_oDWJccu8
-    
+
     ' Find the Ticker value in Range
     Dim Ticker As Range
     Dim count As Integer
+    Dim open_value As Double
+    Dim closed_value As Double
+    Dim yearly_change As Double
+
+    
     Set Ticker = Range("A2").Find(what:=Range("A2"), LookIn:=xlValues, lookat:=xlWhole)
     count = 1
     ' Copy Ticker Value into I
@@ -27,10 +33,13 @@ In this repo, I created a script that loops through various sheets and reads all
     ' Assign variables to the Offset Values
     open_value = Ticker.Offset(, 2).Value
     closed_value = Ticker.Offset(count, 5).Value
-    
+    yearly_change = closed_value - open_value
+    Range("J2").Value = yearly_change
     MsgBox (Ticker)
     MsgBox (open_value)
     MsgBox (closed_value)
+
+    End Sub
     
 
 #### Make Headers for the Columns
