@@ -28,14 +28,16 @@ End Sub
     open_value = Ticker.Offset(, 2).Value
     closed_value = Ticker.Offset(count, 5).Value
     
-
-'   Make Headers for the Columns
-
-    'Loop through the first column
-    
     MsgBox (Ticker)
     MsgBox (open_value)
     MsgBox (closed_value)
+    
+
+#### Make Headers for the Columns
+
+    
+    
+    
     
 
 
