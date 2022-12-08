@@ -6,12 +6,12 @@ In this repo, I created a script that loops through various sheets and reads all
 ### Learning Codes
 
 #### Sub Move_to_Sheets():
-' loop through sheets https://www.youtube.com/watch?v=bUMS_BCF08g
-Dim Wksht As Worksheet
-For Each Wksht In ThisWorkbook.Worksheets
-    
-Next Wksht
-End Sub
+    ' loop through sheets https://www.youtube.com/watch?v=bUMS_BCF08g
+    Dim Wksht As Worksheet
+    For Each Wksht In ThisWorkbook.Worksheets
+
+    Next Wksht
+    End Sub
 
 #### Sub Tcker_Analysis()
     ' https://www.youtube.com/watch?v=nV_oDWJccu8
