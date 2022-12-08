@@ -5,6 +5,16 @@ In this repo, I created a script that loops through various sheets and reads all
 
 ### Learning Codes
 
+#### Headers
+    Sub Generate_Headers()
+
+    Cells(1, 9).Value = "Ticker"
+    Cells(1, 10).Value = "Yearly Change"
+    Cells(1, 11).Value = "Percent Change"
+    Cells(1, 12).Value = "Total Stock Volume"
+    
+End Sub
+
 #### Sub Move_to_Sheets():
     ' loop through sheets https://www.youtube.com/watch?v=bUMS_BCF08g
     Dim Wksht As Worksheet
