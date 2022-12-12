@@ -231,5 +231,120 @@ End Sub
         
     End Sub
 
+### Version 2 - Cleaned up Comments and organized variables
+Sub Test()
+
+    ' Dim variables and initiate
+    For Each ws In Worksheets
+    Dim WorksheetName As String
+    WorksheetName = ws.Name
+   
+    Dim Ticker_Name As String
+    Dim yearly_change As Double
+    yearly_change = 0
+    
+    Dim percent_change As Double
+    percent_change = 0
+
+    Dim open_value As Double
+    Dim closed_value As Double
+    open_value = 0
+    closed_value = 0
+    
+    Dim Ticker_Table_Row As Integer
+    Ticker_Table_Row = 2
+    
+        ws.Cells(1, 9).Value = "Ticker"
+        ws.Cells(1, 10).Value = "Yearly Change"
+        ws.Cells(1, 11).Value = "Percent Change"
+        ws.Cells(1, 12).Value = "Total Stock Volume"
+        
+    
+        ' Loop through all tickers in column A find the last row
+        lastrow = ws.Cells(Rows.count, 1).End(xlUp).Row
+        For i = 2 To lastrow
+    
+            ' If values are not the same keep filtering to the the end.
+            If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1).Value Then
+                If ws.Name Like "2018" Then
+                 
+                    ws.Select
+                    Ticker_Name = ws.Cells(i, 1).Value
+                    ws.Range("I" & Ticker_Table_Row).Value = Ticker_Name
+                    
+                    open_value = ws.Cells((i - 250), 3).Value
+                    closed_value = Cells(i, 6).Value
+                
+                    yearly_change = closed_value - open_value
+                    ws.Range("J" & Ticker_Table_Row).Value = yearly_change
+                    percent_change = yearly_change / open_value
+                    
+                    ws.Range("K" & Ticker_Table_Row).Value = percent_change
+                    ws.Range("K" & Ticker_Table_Row).NumberFormat = "0.00%"
+                    If yearly_change <= 0 Then
+                        ws.Range("J" & Ticker_Table_Row).Interior.Color = vbRed
+                    Else
+                        ws.Range("J" & Ticker_Table_Row).Interior.Color = vbGreen
+                    
+                    End If
+                    Ticker_Table_Row = Ticker_Table_Row + 1
+                    
+                ElseIf ws.Name Like "2019" Then
+                    ws.Select
+                  
+                    Ticker_Name = ws.Cells(i, 1).Value
+                    ws.Range("I" & Ticker_Table_Row).Value = Ticker_Name
+                    
+                    
+                    open_value = ws.Cells((i - 251), 3).Value
+                    closed_value = Cells(i, 6).Value
+                    
+                    yearly_change = closed_value - open_value
+                    ws.Range("J" & Ticker_Table_Row).Value = yearly_change
+                    
+                    percent_change = yearly_change / open_value
+                    ws.Range("K" & Ticker_Table_Row).Value = percent_change
+                    ws.Range("K" & Ticker_Table_Row).NumberFormat = "0.00%"
+                    
+                    If yearly_change <= 0 Then
+                        ws.Range("J" & Ticker_Table_Row).Interior.Color = vbRed
+                    Else
+                        ws.Range("J" & Ticker_Table_Row).Interior.Color = vbGreen
+                    
+                    End If
+                    Ticker_Table_Row = Ticker_Table_Row + 1
+                
+                    
+                Else
+                     'Set the Single Ticker Name
+                     ws.Select
+                    Ticker_Name = ws.Cells(i, 1).Value
+                    ws.Range("I" & Ticker_Table_Row).Value = Ticker_Name
+                    
+                    open_value = ws.Cells((i - 252), 3).Value
+                    closed_value = Cells(i, 6).Value
+                    
+                    yearly_change = closed_value - open_value
+                    ws.Range("J" & Ticker_Table_Row).Value = yearly_change
+                    
+                    percent_change = yearly_change / open_value
+                    ws.Range("K" & Ticker_Table_Row).Value = percent_change
+                    ws.Range("K" & Ticker_Table_Row).NumberFormat = "0.00%"
+                    
+                    If yearly_change <= 0 Then
+                        ws.Range("J" & Ticker_Table_Row).Interior.Color = vbRed
+                    Else
+                        ws.Range("J" & Ticker_Table_Row).Interior.Color = vbGreen
+                    
+                    End If
+                    Ticker_Table_Row = Ticker_Table_Row + 1
+                
+                End If
+           End If
+        Next i
+    Next ws
+        
+        
+    End Sub
 
 
