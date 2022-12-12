@@ -124,6 +124,112 @@ Sub Ticker_Analysis()
 End Sub
 
 
+  ###Version 1 without calculations
+  Sub Test()
+
+
+    For Each ws In Worksheets
+    'calls name of sheet
+
+    Dim WorksheetName As String
+    WorksheetName = ws.Name
+   
+   ' Set an initial variable for holding the Ticker name
+    Dim Ticker_Name As String
+
+    ' Set an initial variables for holding the total yearly change
+    Dim yearly_change As Double
+    yearly_change = 0
     
+    ' Set an initial variable for Percent change
+    Dim percent_change As Double
+    percent_change = 0
+
+    ' Set a variable for holding
+    Dim open_value As Double
+    Dim closed_value As Double
+    open_value = 0
+    closed_value = 0
+    
+        ws.Cells(1, 9).Value = "Ticker"
+        ws.Cells(1, 10).Value = "Yearly Change"
+        ws.Cells(1, 11).Value = "Percent Change"
+        ws.Cells(1, 12).Value = "Total Stock Volume"
+        
+        Dim Ticker_Table_Row As Integer
+        Ticker_Table_Row = 2
+
+        ' Loop through all tickers in column A find the last row
+        lastrow = ws.Cells(Rows.count, 1).End(xlUp).Row
+        For i = 2 To lastrow
+    
+            ' If values are not the same keep filtering to the the end.
+            If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1).Value Then
+                If ws.Name Like "2018" Then
+                 
+                    ws.Select
+                    ' Set the Single Ticker Name
+                    Ticker_Name = ws.Cells(i, 1).Value
+                    ws.Range("I" & Ticker_Table_Row).Value = Ticker_Name
+                    
+                    
+                    open_value = ws.Cells((i - 250), 3).Value
+                    'ws.Range("P" & Ticker_Table_Row).Value = open_value
+                    
+                    closed_value = Cells(i, 6).Value
+                    
+                    'calculate the yearly change
+                    yearly_change = closed_value - open_value
+                    'ws.Range("Q" & Ticker_Table_Row).Value = closed_value
+                    ws.Range("J" & Ticker_Table_Row).Value = yearly_change
+                    If yearly_change >= 0 Then
+                        ws.Range("J" & Ticker_Table_Row).Interior.Color = vbRed
+                    Else
+                        ws.Range("J" & Ticker_Table_Row).Interior.Color = vbGreen
+                    Ticker_Table_Row = Ticker_Table_Row + 1
+                    End If
+                    
+                ElseIf ws.Name Like "2019" Then
+                    ws.Select
+                    ' Set the Single Ticker Name
+                    Ticker_Name = ws.Cells(i, 1).Value
+                    ws.Range("I" & Ticker_Table_Row).Value = Ticker_Name
+                    
+                    
+                    open_value = ws.Cells((i - 251), 3).Value
+                    ws.Range("P" & Ticker_Table_Row).Value = open_value
+                    
+                    closed_value = Cells(i, 6).Value
+                    ws.Range("Q" & Ticker_Table_Row).Value = closed_value
+                    
+                    
+                    
+                    Ticker_Table_Row = Ticker_Table_Row + 1
+                
+                    
+                Else
+                     'Set the Single Ticker Name
+                     ws.Select
+                    Ticker_Name = ws.Cells(i, 1).Value
+                    ws.Range("I" & Ticker_Table_Row).Value = Ticker_Name
+                    
+                    
+                    open_value = ws.Cells((i - 252), 3).Value
+                    ws.Range("P" & Ticker_Table_Row).Value = open_value
+                    
+                    closed_value = Cells(i, 6).Value
+                    ws.Range("Q" & Ticker_Table_Row).Value = closed_value
+                    
+                    Ticker_Table_Row = Ticker_Table_Row + 1
+                End If
+           
+           End If
+        Next i
+           
+        Next ws
+        
+        
+    End Sub
+
 
 
