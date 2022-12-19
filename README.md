@@ -1,7 +1,7 @@
 # VBA-challenge
 bootcamp Module 2 Assignment
 
-In this repo, I created a script that loops through various sheets and reads all the stocks for one year and outputs information. It was a long path in a short amount of time to develop the final solution. This is part of the my journey and thought process. 
+In this repo, I created a script that loops through various sheets and reads all the stocks for one year and outputs information. It was a long path in a short amount of time to develop the final solution. This is part of my journey and thought process. 
 
 Before the Total Stock Volume, Excel crashed and could not handle my code, which led me to believe I had a looping problem somewhere, making Excel time out even on small Excel files.
 
