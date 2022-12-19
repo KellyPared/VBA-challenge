@@ -350,3 +350,8 @@ Sub Test()
     End Sub
 
 
+
+Practice Data with an error in Percent calculation
+
+<img width="1246" alt="Screen Shot 2022-12-19 at 9 03 20 AM" src="https://user-images.githubusercontent.com/40581033/208451664-9d1e132f-14bd-4b44-aff4-a932181d6962.png">
+
