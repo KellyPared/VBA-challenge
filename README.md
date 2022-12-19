@@ -45,10 +45,13 @@ End Sub
     End Sub
     
 #### Make Headers for the Columns  
+
  ## Version 1
+ 
  '____________________________
 ' Looping Code for Worksheets
 '____________________________
+
 Sub Loop_over_worksheets()
     ' THis will loop through all the worksheets.
     For Each ws In Worksheets
@@ -173,6 +176,7 @@ End Sub
     End Sub
 
 ### Version 2 - Cleaned up Comments and organized variables
+
 Sub Test()
 
     ' Dim variables and initiate
